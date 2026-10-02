@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050609">
+<meta name="description" content="@mediakill — Telegram bots, digital projects, websites, design and services.">
+<title>@mediakill — Digital Portfolio</title>
+<style>
+:root{
+--bg:#030407;--bg2:#080a0f;--card:rgba(12,14,20,.68);--card2:rgba(18,21,28,.58);
+--line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.15);--text:#f6f7f9;
+--muted:#9299a6;--muted2:#626976;--green:#63f5a1;--blue:#7797ff;
+--shadow:0 28px 100px rgba(0,0,0,.48);--radius:26px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+overflow-x:hidden;line-height:1.55;
+}
+body:before{
+content:"";position:fixed;z-index:-10;inset:0;
+background:
+radial-gradient(circle at 12% 12%,rgba(101,245,161,.10),transparent 20%),
+radial-gradient(circle at 86% 15%,rgba(119,151,255,.12),transparent 23%),
+radial-gradient(circle at 50% 65%,rgba(255,255,255,.045),transparent 27%),
+radial-gradient(circle at 75% 88%,rgba(166,98,255,.08),transparent 22%),
+linear-gradient(135deg,#020306,#080a10 52%,#030407);
+}
+body:after{
+content:"";position:fixed;z-index:-9;inset:-10%;
+background-image:
+radial-gradient(circle,rgba(255,255,255,.18) 1px,transparent 1.2px),
+radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1.2px);
+background-size:93px 93px,137px 137px;background-position:10px 20px,70px 40px;
+opacity:.22;animation:stars 35s linear infinite;pointer-events:none;
+}
+@keyframes stars{to{transform:translate3d(-60px,40px,0)}}
+.bg-orb{position:fixed;z-index:-8;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:.55}
+.orb1{width:380px;height:380px;background:rgba(74,239,156,.08);top:18%;left:-160px;animation:orb1 15s ease-in-out infinite alternate}
+.orb2{width:450px;height:450px;background:rgba(90,110,255,.09);top:55%;right:-210px;animation:orb2 18s ease-in-out infinite alternate}
+.orb3{width:300px;height:300px;background:rgba(187,80,255,.06);bottom:0;left:40%;animation:orb3 13s ease-in-out infinite alternate}
+@keyframes orb1{to{transform:translate(180px,90px)}}
+@keyframes orb2{to{transform:translate(-150px,-100px)}}
+@keyframes orb3{to{transform:translate(80px,-90px)}}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(1160px,92%);margin:auto}
+.nav{
+position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;width:min(1160px,92%);
+height:66px;padding:0 12px 0 22px;display:flex;align-items:center;justify-content:space-between;
+background:rgba(6,8,12,.72);border:1px solid var(--line);border-radius:22px;
+backdrop-filter:blur(24px);box-shadow:0 15px 60px rgba(0,0,0,.38)
+}
+.brand{font-weight:850;letter-spacing:-.045em;font-size:18px}.brand span{color:#5e6673}
+.navlinks{display:flex;gap:4px;align-items:center}.navlinks a{font-size:12px;color:#9ba2ae;padding:10px 11px;border-radius:11px;transition:.25s}
+.navlinks a:hover{color:#fff;background:rgba(255,255,255,.06)}.nav-cta{background:#fff!important;color:#050609!important;font-weight:800}
+.menu{display:none;border:0;background:none;color:#fff;font-size:24px}
+.hero{min-height:930px;padding:150px 0 100px;display:flex;align-items:center}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:70px;align-items:center}
+.eyebrow{display:flex;align-items:center;gap:9px;color:#aab1bd;font-size:11px;text-transform:uppercase;letter-spacing:.18em;margin-bottom:24px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 18px rgba(99,245,161,.8);animation:pulse 1.7s infinite}
+@keyframes pulse{50%{opacity:.3;transform:scale(.65)}}
+h1{font-size:clamp(58px,8vw,104px);line-height:.86;letter-spacing:-.08em;margin-bottom:27px}
+h1 .dim{color:#515864}
+.hero-copy{max-width:660px;color:#a5acb7;font-size:17px}
+.actions{display:flex;gap:11px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 18px;border-radius:14px;border:1px solid var(--line2);font-size:12px;font-weight:800;transition:.25s}
+.btn.primary{background:#fff;color:#050609}.btn.ghost{background:rgba(255,255,255,.035);color:#fff}
+.btn:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(0,0,0,.3)}
+.hero-card{position:relative}.id-card{
+position:relative;min-height:510px;padding:31px;border:1px solid rgba(255,255,255,.14);border-radius:34px;
+background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.025));
+box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(20px);transform:rotate(1.2deg);transition:.5s
+}
+.id-card:hover{transform:rotate(0) translateY(-8px)}
+.id-card:before{content:"";position:absolute;width:330px;height:330px;right:-160px;top:-170px;border-radius:50%;background:rgba(255,255,255,.08);filter:blur(10px)}
+.id-card:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.035) 50%,transparent 75%);transform:translateX(-100%);animation:shine 5s infinite}
+@keyframes shine{55%,100%{transform:translateX(100%)}}
+.card-top{display:flex;justify-content:space-between;color:#777f8b;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.avatar{
+width:106px;height:106px;border-radius:30px;margin:58px 0 22px;display:grid;place-items:center;
+font-weight:950;font-size:30px;letter-spacing:-.1em;color:#fff;
+background:radial-gradient(circle at 30% 22%,#6b7280,#1a1d25 48%,#07080c);
+border:1px solid rgba(255,255,255,.16);box-shadow:inset 0 0 35px rgba(255,255,255,.07),0 20px 50px rgba(0,0,0,.42)
+}
+.id-name{font-size:39px;font-weight:900;letter-spacing:-.065em}.id-role{color:#8c94a1;margin-top:4px}
+.id-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:24px}.tag{font-size:10px;color:#aab1bc;padding:7px 9px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.035)}
+.id-bottom{position:absolute;left:31px;right:31px;bottom:28px;display:flex;justify-content:space-between;align-items:end}
+.available{font-size:11px;color:#838b98}.available b{color:var(--green)}.flag{font-size:47px;filter:drop-shadow(0 8px 18px rgba(0,0,0,.4))}
+.section{padding:105px 0}.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:43px}
+.kicker{color:#6e7683;font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:10px}
+h2{font-size:clamp(36px,5vw,61px);line-height:.96;letter-spacing:-.07em}.lead{color:#7f8794;max-width:450px;font-size:13px}
+.panel{border:1px solid var(--line);background:var(--card);border-radius:var(--radius);padding:31px;box-shadow:0 20px 75px rgba(0,0,0,.18);backdrop-filter:blur(18px)}
+.about-grid{display:grid;grid-template-columns:1.18fr .82fr;gap:15px}.about-text{font-size:18px;color:#adb4bf;max-width:760px}.about-text b{color:#fff}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.skill{padding:16px;border-radius:15px;border:1px solid var(--line);background:rgba(255,255,255,.025);font-size:12px;color:#aeb5bf}.skill span{display:block;color:#fff;font-weight:800;margin-bottom:3px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.stat{padding:25px;border:1px solid var(--line);background:rgba(255,255,255,.025);border-radius:20px}.stat strong{display:block;font-size:32px;letter-spacing:-.06em}.stat span{font-size:11px;color:#737b88}
+.service-grid,.bot-grid,.project-grid,.feature-grid,.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.service,.bot,.project,.feature,.work{
+border:1px solid var(--line);background:var(--card2);border-radius:23px;padding:24px;transition:.3s;position:relative;overflow:hidden
+}
+.service:before,.bot:before,.project:before,.feature:before{content:"";position:absolute;width:120px;height:120px;right:-70px;top:-70px;border-radius:50%;background:rgba(255,255,255,.045);filter:blur(3px)}
+.service:hover,.bot:hover,.project:hover,.feature:hover,.work:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.19);box-shadow:0 24px 65px rgba(0,0,0,.27)}
+.icon-avatar,.bot-avatar{
+display:grid;place-items:center;background:radial-gradient(circle at 30% 20%,#555d69,#171a21 58%,#08090d);
+border:1px solid rgba(255,255,255,.13);box-shadow:inset 0 0 24px rgba(255,255,255,.06)
+}
+.icon-avatar{width:59px;height:59px;border-radius:17px;margin-bottom:18px;font-size:21px;font-weight:900}
+.service h3,.bot h3,.project h3,.feature h3{font-size:18px;letter-spacing:-.035em;margin-bottom:8px}.service p,.bot p,.project p,.feature p{color:#858d9a;font-size:12px}
+.price{font-size:18px;font-weight:850;margin-top:17px}.price small{color:#707783;font-weight:500}
+.price-list{display:grid;gap:14px}.price-item{display:grid;grid-template-columns:1fr auto;gap:18px;padding:17px 0;border-bottom:1px solid var(--line)}.price-item:last-child{border-bottom:0}
+.price-item h4{font-size:14px}.price-item p{color:#777f8c;font-size:11px;margin-top:4px}.price-value{font-weight:850;white-space:nowrap}
+.notice{margin-top:18px;padding:14px 16px;border:1px dashed rgba(255,255,255,.13);border-radius:14px;color:#737b87;font-size:11px}
+.project-grid{grid-template-columns:repeat(3,1fr)}
+.project{min-height:355px;padding:25px}.project-num{font-size:10px;color:#6e7683;letter-spacing:.16em}
+.project h3{font-size:27px;margin:48px 0 10px}.project p{line-height:1.7}.project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:19px}.project-tag{font-size:9px;color:#89919d;border:1px solid var(--line);padding:5px 7px;border-radius:7px}
+.project-foot{position:absolute;left:25px;right:25px;bottom:21px;display:flex;justify-content:space-between;color:#737b87;font-size:10px}
+.project.shop{background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(20,22,28,.52))}
+.project.shop .shop-mark{font-size:43px;font-weight:950;letter-spacing:-.09em;margin-top:43px}.project.shop h3{margin:4px 0 8px}
+.bot-grid{grid-template-columns:repeat(3,1fr)}.bot-avatar{width:74px;height:74px;border-radius:21px;margin-bottom:18px;font-size:24px;font-weight:950}
+.badge{display:inline-block;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:#959daa;border:1px solid var(--line);padding:6px 8px;border-radius:8px;margin-bottom:12px}
+.bot .bot-user{font-size:10px;color:#6e7683;margin-top:14px}.bot-link{display:inline-block;margin-top:16px;font-size:11px;font-weight:800}
+.feature-grid{grid-template-columns:repeat(4,1fr)}.feature{min-height:180px}.feature .big{font-size:28px;margin-bottom:26px}.feature h3{font-size:15px}.feature p{font-size:11px}
+.gallery{grid-template-columns:repeat(4,1fr)}.work{padding:0;min-height:225px;display:flex;align-items:end;background:linear-gradient(145deg,#20242d,#080a0f)}
+.work-visual{position:absolute;inset:0;display:grid;place-items:center;font-size:49px;font-weight:950;letter-spacing:-.1em;color:rgba(255,255,255,.78)}
+.work-visual:before{content:"";position:absolute;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.07);filter:blur(30px)}
+.work-overlay{position:relative;width:100%;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.9));padding-top:70px}.work-overlay h3{font-size:15px}.work-overlay p{font-size:10px;color:#838b97}
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.step{padding:26px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025)}.step-num{font-size:10px;color:#6d7582}.step h3{margin:28px 0 7px}.step p{color:#7f8794;font-size:12px}
+.reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.review{padding:24px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.025)}
+.review-top{display:flex;align-items:center;gap:11px}.mini{width:39px;height:39px;border-radius:12px;background:#22262f;display:grid;place-items:center;font-weight:800}.review-name{font-size:13px;font-weight:750}.review-user{font-size:10px;color:#6f7784}.review p{color:#929aa6;font-size:12px;margin-top:17px}
+.contact{padding:70px 0 120px}.contact-box{position:relative;overflow:hidden;padding:60px;border:1px solid var(--line);border-radius:34px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.02));text-align:center}
+.contact-box:before{content:"";position:absolute;width:450px;height:450px;border-radius:50%;background:rgba(119,151,255,.08);filter:blur(80px);left:50%;top:50%;transform:translate(-50%,-50%)}.contact-box>*{position:relative}.contact-box h2{margin-bottom:13px}.contact-box p{color:#818995;margin-bottom:25px}
+footer{border-top:1px solid var(--line);padding:25px 0;color:#5f6773;font-size:10px;display:flex;justify-content:space-between}
+.float{position:fixed;right:22px;bottom:22px;z-index:30;width:45px;height:45px;border:1px solid var(--line);border-radius:14px;background:rgba(10,11,15,.78);backdrop-filter:blur(15px);color:#fff;cursor:pointer}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .75s ease,transform .75s ease}.reveal.show{opacity:1;transform:none}
+@media(max-width:900px){
+.navlinks{display:none}.menu{display:block}.nav.open .navlinks{display:flex;position:absolute;top:73px;left:0;right:0;padding:10px;flex-direction:column;background:rgba(7,9,13,.96);border:1px solid var(--line);border-radius:18px}
+.nav.open .navlinks a{width:100%;text-align:center}.hero{min-height:auto;padding-top:145px}.hero-grid{grid-template-columns:1fr;gap:55px}.hero-card{max-width:670px;width:100%;margin:auto}
+.service-grid,.bot-grid{grid-template-columns:repeat(2,1fr)}.project-grid{grid-template-columns:1fr 1fr}.feature-grid{grid-template-columns:repeat(2,1fr)}
+.gallery{grid-template-columns:repeat(2,1fr)}.about-grid{grid-template-columns:1fr}
+}
+@media(max-width:580px){
+.container{width:94%}.section{padding:76px 0}.section-head{display:block}.lead{margin-top:15px}.stats{grid-template-columns:1fr 1fr}
+.service-grid,.bot-grid,.project-grid,.process,.reviews{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr 1fr}
+.id-card{min-height:455px}.id-name{font-size:31px}h1{font-size:60px}.hero-copy{font-size:15px}.price-item{grid-template-columns:1fr}.price-value{font-size:14px}.contact-box{padding:42px 20px}footer{flex-direction:column;gap:8px}
+}
+</style>
+</head>
+<body>
+<div class="bg-orb orb1"></div><div class="bg-orb orb2"></div><div class="bg-orb orb3"></div>
+
+<nav class="nav" id="nav">
+<a class="brand" href="#top">@mediakill<span>/portfolio</span></a>
+<div class="navlinks">
+<a href="#about">Обо мне</a><a href="#services">Услуги</a><a href="#price">Прайс</a><a href="#projects">Проекты</a><a href="#bots">Боты</a><a href="#works">Работы</a><a href="#contact" class="nav-cta">Связаться</a>
+</div><button class="menu" id="menu">☰</button>
+</nav>
+
+<main id="top">
+<section class="hero">
+<div class="container hero-grid">
+<div class="reveal">
+<div class="eyebrow"><span class="dot"></span> ONLINE · AVAILABLE FOR ORDERS</div>
+<h1>@mediakill<br><span class="dim" id="typing">digital creator</span></h1>
+<p class="hero-copy">Telegram-боты, сайты, цифровые проекты, дизайн и собственные инструменты. Собираю идеи в готовые продукты с аккуратным интерфейсом и характером.</p>
+<div class="actions"><a class="btn primary" href="https://t.me/mediakill" target="_blank">Написать в Telegram ↗</a><a class="btn ghost" href="#projects">Смотреть проекты ↓</a></div>
+</div>
+<div class="hero-card reveal"><div class="id-card">
+<div class="card-top"><span>DIGITAL ID · 2026</span><span>001</span></div>
+<div class="avatar">MK</div><div class="id-name">@mediakill</div><div class="id-role">Telegram · Web · Design · Digital</div>
+<div class="id-tags"><span class="tag">TELEGRAM</span><span class="tag">WEB</span><span class="tag">OSINT</span><span class="tag">DESIGN</span><span class="tag">DIGITAL</span></div>
+<div class="id-bottom"><div class="available"><b>● ONLINE</b><br>Open for projects</div><div class="flag">🇬🇧</div></div>
+</div></div>
+</div>
+</section>
+
+<section class="section reveal" id="about"><div class="container">
+<div class="section-head"><div><div class="kicker">01 / profile</div><h2>Немного обо мне</h2></div><p class="lead">Функциональность, визуал и необычные идеи — в одном цифровом пространстве.</p></div>
+<div class="about-grid"><div class="panel"><p class="about-text">Бывший OSINT специалист. Создаю <b>Telegram-ботов</b>, автоматизацию, сайты и собственные проекты. Основной фокус — функциональность, удобный интерфейс и необычные идеи. Работаю с открытой информацией и цифровым дизайном.</p></div>
+<div class="panel"><div class="skills"><div class="skill"><span>Telegram</span>Bots & Mini Apps</div><div class="skill"><span>Web</span>HTML / CSS / JS</div><div class="skill"><span>Design</span>Avatars & banners</div><div class="skill"><span>Digital</span>Projects & tools</div></div></div></div>
+<div class="stats"><div class="stat"><strong>07+</strong><span>Telegram-ботов</span></div><div class="stat"><strong>03</strong><span>собственных проекта</span></div><div class="stat"><strong>20+</strong><span>digital tasks</span></div><div class="stat"><strong>24/7</strong><span>связь в Telegram</span></div></div>
+</div></section>
+
+<section class="section reveal" id="services"><div class="container">
+<div class="section-head"><div><div class="kicker">02 / services</div><h2>Что я делаю</h2></div><p class="lead">От идеи и визуала до готового цифрового продукта.</p></div>
+<div class="service-grid">
+<div class="service"><div class="icon-avatar">TG</div><h3>Telegram-боты</h3><p>Создание ботов, логики, меню, профилей, поиска, игровых механик и Mini App-интерфейсов.</p></div>
+<div class="service"><div class="icon-avatar">⌘</div><h3>Сайты</h3><p>Портфолио, персональные страницы, GitHub Pages, GUNS.LOL и кастомные одностраничники.</p></div>
+<div class="service"><div class="icon-avatar">✦</div><h3>Аватарки</h3><p>Кастомные аватарки под проект, бот, канал или личный профиль.</p></div>
+<div class="service"><div class="icon-avatar">▣</div><h3>Баннеры</h3><p>Обложки, рекламные баннеры и визуалы для digital-проектов.</p></div>
+<div class="service"><div class="icon-avatar">OS</div><h3>OSINT</h3><p>Поиск и сопоставление информации только из открытых и законных источников.</p></div>
+<div class="service"><div class="icon-avatar">FX</div><h3>Редактирование</h3><p>Эдиты, эффекты, обработка изображений и дополнительный визуальный монтаж.</p></div>
+</div></div></section>
+
+<section class="section reveal" id="price"><div class="container">
+<div class="section-head"><div><div class="kicker">03 / pricing</div><h2>Мой прайс</h2></div><p class="lead">OSINT / DIGITAL SERVICES и другие цифровые услуги.</p></div>
+<div class="panel">
+<div class="price-list">
+<div class="price-item"><div><h4>Базовый поиск</h4><p>Поиск открытой информации по нику, username и другим общедоступным данным.</p></div><div class="price-value">$5 / 200 грн</div></div>
+<div class="price-item"><div><h4>Расширенный OSINT</h4><p>Комплексный поиск по открытым источникам с сопоставлением найденной информации.</p></div><div class="price-value">$10 / 400 грн</div></div>
+</div>
+<div class="notice">Работа проводится только с открытыми и законными источниками. Взлом, получение паролей и доступ к закрытым аккаунтам не входят.</div>
+<div class="kicker" style="margin-top:35px">GUNS.LOL — сайты на заказ</div>
+<div class="price-list">
+<div class="price-item"><div><h4>Простой сайт</h4><p>Базовое оформление, текст и ссылки.</p></div><div class="price-value">3$ / 70 UAH</div></div>
+<div class="price-item"><div><h4>Стандартный сайт</h4><p>Индивидуальный дизайн, оформление профиля, ссылки и дополнительные элементы.</p></div><div class="price-value">4$ / 100 UAH</div></div>
+<div class="price-item"><div><h4>Премиум</h4><p>Полностью индивидуальное оформление с кастомным дизайном и дополнительными эффектами.</p></div><div class="price-value">8$ / 150 UAH</div></div>
+</div>
+<div class="kicker" style="margin-top:35px">АВАТАРКИ</div>
+<div class="price-list">
+<div class="price-item"><div><h4>Простая аватарка</h4><p>Аватарка по вашему запросу и описанию.</p></div><div class="price-value">1$ / 50 UAH</div></div>
+<div class="price-item"><div><h4>Кастомная аватарка</h4><p>Индивидуальный дизайн с текстом, ником, тематикой и дополнительными элементами.</p></div><div class="price-value">2$ / 100 UAH</div></div>
+</div>
+<div class="kicker" style="margin-top:35px">OSINT EDITS</div>
+<div class="price-list">
+<div class="price-item"><div><h4>Basic Edit</h4><p>Короткий эдит в OSINT-тематике.</p></div><div class="price-value">$5 / 200 грн</div></div>
+<div class="price-item"><div><h4>Advanced Edit</h4><p>Более сложный монтаж с эффектами, текстом, переходами и дополнительной обработкой.</p></div><div class="price-value">$10 / 400 грн</div></div>
+<div class="price-item"><div><h4>Premium Edit</h4><p>Полностью индивидуальный эдит с продвинутым монтажом и большим количеством эффектов.</p></div><div class="price-value">$20 / 800 грн</div></div>
+</div>
+<div class="kicker" style="margin-top:35px">РЕДАКТИРОВАНИЕ ИЗОБРАЖЕНИЙ</div>
+<div class="price-list">
+<div class="price-item"><div><h4>Базовая обработка</h4></div><div class="price-value">3$ / 120 UAH</div></div>
+<div class="price-item"><div><h4>Кастомная обработка</h4></div><div class="price-value">5$ / 200 UAH</div></div>
+<div class="price-item"><div><h4>Сложная обработка</h4></div><div class="price-value">от 10$ / 400 UAH</div></div>
+</div>
+<div class="kicker" style="margin-top:35px">ГОТОВЫЕ МАТЕРИАЛЫ</div>
+<div class="price-list">
+<div class="price-item"><div><h4>OSINT Pack</h4></div><div class="price-value">5$ / 200 UAH</div></div>
+<div class="price-item"><div><h4>Private Pack</h4></div><div class="price-value">7$ / 300 UAH</div></div>
+</div>
+<div class="kicker" style="margin-top:35px">САЙТЫ НА GITHUB</div>
+<div class="price-list"><div class="price-item"><div><h4>Сайт на заказ</h4><p>Дизайн, структура, анимации, оформление и нужные вам блоки. Итоговая цена зависит от сложности.</p></div><div class="price-value">от 4$ / 150 UAH</div></div></div>
+<div class="kicker" style="margin-top:35px">ОПЛАТА</div><p style="color:#7c8490;font-size:12px">USD · UAH · crypto · bot</p>
+<div class="notice">Оплата производится перед началом работы. Срок выполнения зависит от сложности заказа. Все OSINT-услуги выполняются только с использованием общедоступной информации и в рамках закона.</div>
+</div></div></section>
+
+<section class="section reveal" id="projects"><div class="container">
+<div class="section-head"><div><div class="kicker">04 / selected work</div><h2>Проекты</h2></div><p class="lead">Три проекта, которые сейчас представлены в портфолио.</p></div>
+<div class="project-grid">
+<a class="project" href="https://t.me/scamvoron" target="_blank"><span class="project-num">01 / PROJECT</span><h3>Темный Ворон</h3><p>Проект, направленный на защиту мирных людей, которые не могут защитить себя самостоятельно. Обучение основам OSINT и работе с информацией из открытых источников. Анализ данных проводится только из открытых источников с учётом правил Telegram и действующего законодательства. Проект не предназначен для шантажа или распространения закрытой информации.</p><div class="project-tags"><span class="project-tag">Telegram</span><span class="project-tag">OSINT</span><span class="project-tag">Project</span><span class="project-tag">Media</span></div><div class="project-foot"><span>@scamvoron</span><span>Открыть канал ↗</span></div></a>
+<a class="project" href="https://t.me/britancu" target="_blank"><span class="project-num">02 / PROJECT</span><h3>Лист британцев 🇬🇧</h3><p>Telegram-проект со своим визуальным оформлением и концепцией списка. Создатель листа — @mediakilled. Отдельная digital-площадка внутри Telegram.</p><div class="project-tags"><span class="project-tag">Telegram</span><span class="project-tag">Project</span><span class="project-tag">Media</span></div><div class="project-foot"><span>@britancu</span><span>Открыть канал ↗</span></div></a>
+<a class="project shop" href="https://t.me/SaleShopSK" target="_blank"><span class="project-num">03 / SHOP</span><div class="shop-mark">S.K</div><h3>S.K SHOP</h3><p>Telegram-площадка для купли, продажи и обмена цифровыми товарами и услугами. Место, где продавцы и покупатели могут находить друг друга и размещать предложения.</p><div class="project-tags"><span class="project-tag">Telegram</span><span class="project-tag">Shop</span><span class="project-tag">Exchange</span><span class="project-tag">Marketplace</span></div><div class="project-foot"><span>@SaleShopSK</span><span>Открыть проект ↗</span></div></a>
+</div></div></section>
+
+<section class="section reveal" id="bots"><div class="container">
+<div class="section-head"><div><div class="kicker">05 / telegram</div><h2>Мои боты</h2></div><p class="lead">Все проекты с прямым переходом к Telegram.</p></div>
+<div class="bot-grid">
+<a class="bot" href="https://t.me/mediaEmoji_bot" target="_blank"><div class="bot-avatar">✦</div><span class="badge">Emoji</span><h3>Emoji Maker</h3><p>Telegram-бот для создания собственных эмодзи из анимированных TGS-шаблонов. Пользователь выбирает шаблон, задаёт текст и может создавать наборы эмодзи.</p><div class="bot-user">@mediaEmoji_bot ↗</div></a>
+<a class="bot" href="https://t.me/walletMedia_bot" target="_blank"><div class="bot-avatar">MC</div><span class="badge">Games</span><h3>Media Casino</h3><p>Telegram-казино с игровым балансом, бонусами, мини-играми и статистикой. Проект также связан с Mini App-интерфейсом.</p><div class="bot-user">@walletMedia_bot ↗</div></a>
+<a class="bot" href="https://t.me/mediakill_robot" target="_blank"><div class="bot-avatar">BIO</div><span class="badge">Profile</span><h3>Biography</h3><p>Бот для создания персональной биографии. Пользователь оформляет страницу и получает ссылку, по которой другие могут посмотреть опубликованную биографию.</p><div class="bot-user">@mediakill_robot ↗</div></a>
+<a class="bot" href="https://t.me/search_idRobot" target="_blank"><div class="bot-avatar">ID</div><span class="badge">Utility</span><h3>ID Finder</h3><p>Telegram-инструмент для поиска Telegram ID и получения информации, доступной через Telegram.</p><div class="bot-user">@search_idRobot ↗</div></a>
+<a class="bot" href="https://t.me/mediaUsername_bot" target="_blank"><div class="bot-avatar">@</div><span class="badge">Search</span><h3>Search Username</h3><p>Инструмент для поиска и проверки username, позволяющий быстро работать с Telegram-именами пользователей.</p><div class="bot-user">@mediaUsername_bot ↗</div></a>
+<a class="bot" href="https://t.me/sk_linkSupportBot" target="_blank"><div class="bot-avatar">?</div><span class="badge">Support</span><h3>Support</h3><p>Бот поддержки: сюда можно отправить вопрос и получить помощь по проектам и сервисам.</p><div class="bot-user">@sk_linkSupportBot ↗</div></a>
+<a class="bot" href="https://t.me/mediabest_robot" target="_blank"><div class="bot-avatar">MS</div><span class="badge">Cards</span><h3>MELSTROY CARDS</h3><p>Коллекционный бот с дропами карточек, редкостями, коллекцией и ежедневными наградами.</p><div class="bot-user">@mediabest_robot ↗</div></a>
+</div></div></section>
+
+<section class="section reveal"><div class="container">
+<div class="section-head"><div><div class="kicker">06 / advantages</div><h2>Почему формат такой</h2></div><p class="lead">Несколько деталей, которые делают сайт не просто списком услуг.</p></div>
+<div class="feature-grid">
+<div class="feature"><div class="big">◉</div><h3>Dark Interface</h3><p>Тёмная система с glassmorphism и мягким свечением.</p></div>
+<div class="feature"><div class="big">✦</div><h3>Motion</h3><p>Плавные появления, hover-эффекты и динамический фон.</p></div>
+<div class="feature"><div class="big">↗</div><h3>Direct Links</h3><p>К каждому проекту и боту можно перейти напрямую.</p></div>
+<div class="feature"><div class="big">▣</div><h3>Mobile Ready</h3><p>Сайт адаптирован под телефон, планшет и компьютер.</p></div>
+</div></div></section>
+
+<section class="section reveal" id="works"><div class="container">
+<div class="section-head"><div><div class="kicker">07 / visual lab</div><h2>Галерея работ</h2></div><p class="lead">Визуальные карточки под стиль твоих digital-проектов.</p></div>
+<div class="gallery">
+<div class="work"><div class="work-visual">MK</div><div class="work-overlay"><h3>@mediakill</h3><p>Personal identity</p></div></div>
+<div class="work"><div class="work-visual">TG</div><div class="work-overlay"><h3>Telegram</h3><p>Bot identity</p></div></div>
+<div class="work"><div class="work-visual">OS</div><div class="work-overlay"><h3>OSINT</h3><p>Digital research</p></div></div>
+<div class="work"><div class="work-visual">S.K</div><div class="work-overlay"><h3>S.K SHOP</h3><p>Marketplace identity</p></div></div>
+<div class="work"><div class="work-visual">🇬🇧</div><div class="work-overlay"><h3>British List</h3><p>Project identity</p></div></div>
+<div class="work"><div class="work-visual">MC</div><div class="work-overlay"><h3>Media Casino</h3><p>Bot identity</p></div></div>
+<div class="work"><div class="work-visual">BIO</div><div class="work-overlay"><h3>Biography</h3><p>Profile system</p></div></div>
+<div class="work"><div class="work-visual">ID</div><div class="work-overlay"><h3>ID Finder</h3><p>Utility identity</p></div></div>
+</div></div></section>
+
+<section class="section reveal"><div class="container">
+<div class="section-head"><div><div class="kicker">08 / workflow</div><h2>Как заказать</h2></div><p class="lead">Простой процесс без лишней бюрократии.</p></div>
+<div class="process"><div class="step"><div class="step-num">01 / CONTACT</div><h3>Напиши мне</h3><p>Опиши задачу, желаемый результат и пример того, что тебе нравится.</p></div><div class="step"><div class="step-num">02 / DISCUSS</div><h3>Обсудим</h3><p>Согласуем детали, сроки, формат работы и стоимость заказа.</p></div><div class="step"><div class="step-num">03 / RESULT</div><h3>Получишь результат</h3><p>После согласования и оплаты начинается работа над проектом.</p></div></div>
+</div></section>
+
+<section class="section reveal"><div class="container">
+<div class="section-head"><div><div class="kicker">09 / feedback</div><h2>Отзывы</h2></div><p class="lead">Здесь можно размещать реальные отзывы клиентов.</p></div>
+<div class="reviews"><div class="review"><div class="review-top"><div class="mini">+</div><div><div class="review-name">Ваш отзыв</div><div class="review-user">@username</div></div></div><p>«Место для настоящего отзыва о сайте, боте, аватарке или другой работе.»</p></div><div class="review"><div class="review-top"><div class="mini">+</div><div><div class="review-name">Ваш отзыв</div><div class="review-user">@username</div></div></div><p>«Можно заменить этот текст на реальный отзыв после выполнения заказа.»</p></div></div>
+</div></section>
+
+<section class="contact reveal" id="contact"><div class="container"><div class="contact-box">
+<div class="kicker">10 / contact</div><h2>Есть идея?</h2><p>Расскажи, что хочешь сделать — обсудим проект напрямую в Telegram.</p><a class="btn primary" href="https://t.me/mediakill" target="_blank">@mediakill ↗</a>
+</div></div></section>
+</main>
+
+<footer class="container"><span>© 2026 @mediakill</span><span>Telegram · Web · Digital</span></footer>
+<button class="float" id="up" title="Наверх">↑</button>
+
+<script>
+const nav=document.getElementById('nav'),menu=document.getElementById('menu');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(e=>observer.observe(e));
+const words=['digital creator','telegram developer','web designer','project builder','digital maker'];
+let wi=0,ci=0,del=false;const typing=document.getElementById('typing');
+function typeLoop(){const w=words[wi];typing.textContent=w.slice(0,ci);if(!del&&ci<w.length){ci++;setTimeout(typeLoop,75)}else if(!del){del=true;setTimeout(typeLoop,1200)}else if(ci>0){ci--;setTimeout(typeLoop,35)}else{del=false;wi=(wi+1)%words.length;setTimeout(typeLoop,300)}}typeLoop();
+document.getElementById('up').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+</script>
+</body>
+</html>
